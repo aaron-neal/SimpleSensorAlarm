@@ -1,0 +1,18 @@
+{
+    "name": "SimpleSensorAlarm",
+    "version": "1.0.6",
+    "keywords": "alarm,sensors,temperature,humidity",
+    "description": "An easy to use library for generating high / low alarms from sensors such as temperature and humidity",
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/porkyneal/SimpleSensorAlarm.git"
+    },
+    "authors":{
+        "name":"Aaron Neal",
+        "email":"aaron@aaronneal.co.uk",
+        "maintainer": true
+    },
+    "frameworks": ["arduino"],
+    "platforms": "*"
+}
