@@ -1,6 +1,6 @@
 {
     "name": "SimpleSensorAlarm",
-    "version": "1.0.6",
+    "version": "1.0.0",
     "keywords": "alarm,sensors,temperature,humidity",
     "description": "An easy to use library for generating high / low alarms from sensors such as temperature and humidity",
     "repository":
