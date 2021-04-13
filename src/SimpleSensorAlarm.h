@@ -8,10 +8,11 @@ enum AlarmStatus{
 };
 
 class SimpleSensorAlarm {
-    using AlarmEventCB = void (*)(AlarmStatus);
+    using AlarmEventCB = void (*)(uint8_t, AlarmStatus);
     
     public:
         void setup(
+            uint8_t id,
             bool enableHighAlarm, 
             float highThreshold, 
             bool enableLowAlarm,
@@ -42,6 +43,7 @@ class SimpleSensorAlarm {
 
         AlarmStatus getAlarmStatus();
     private:
+        uint8_t _id;
 
         AlarmEventCB alarmCallback;
 
@@ -49,15 +51,15 @@ class SimpleSensorAlarm {
         void _lowAlarmCheck(float);
 
         bool _enableHighAlarm;
-        float _highThreshold;
+        float _highThreshold = false;
 
         float _lowThreshold;
-        bool _enableLowAlarm;
+        bool _enableLowAlarm = false;
 
-        float _diff;
+        float _diff = 0;
 
-        unsigned long _timeDelay;
-        unsigned long _lowBreachTime;
-        unsigned long _highBreachTime;
-        AlarmStatus _alarmStatus;
+        unsigned long _timeDelay = 0;
+        unsigned long _lowBreachTime = 0;
+        unsigned long _highBreachTime = 0;
+        AlarmStatus _alarmStatus = AL_NO_ALARM;
 };
