@@ -15,7 +15,7 @@
     },
     "examples":[{
         "name": "Alarm Callback",
-        "base": "examples/alarm_callback",
+        "base": "examples/alarm callback",
         "files": ["alarm_callback.ino"]
     }],
     "frameworks": ["arduino"],
