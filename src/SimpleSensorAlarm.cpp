@@ -113,14 +113,14 @@ void SimpleSensorAlarm::_highAlarmCheck(float sensorValue){
     //detect high threshold breach
     if(_highBreachTime > 0 && _alarmStatus == AL_NO_ALARM && millis() - _highBreachTime >= _timeDelay){
         _alarmStatus = AL_HIGH_ALARM;
-        if(alarmCallback != nullptr) alarmCallback(_id, AL_HIGH_ALARM);
+        if(alarmCallback != nullptr) alarmCallback(_id, _alarmStatus);
     }
 
     //use diff high
     if(_alarmStatus == AL_HIGH_ALARM && sensorValue < _highThreshold - _diff){
         _alarmStatus = AL_NO_ALARM;
         _highBreachTime = 0;
-        if(alarmCallback != nullptr) alarmCallback(_id, AL_NO_ALARM);
+        if(alarmCallback != nullptr) alarmCallback(_id, _alarmStatus);
     } 
 }
 
@@ -138,13 +138,13 @@ void SimpleSensorAlarm::_lowAlarmCheck(float sensorValue){
     //detect low threshold breach
     if(_lowBreachTime > 0 && _alarmStatus == AL_NO_ALARM && millis() - _lowBreachTime >= _timeDelay){
         _alarmStatus = AL_LOW_ALARM;
-        if(alarmCallback != nullptr) alarmCallback(_id, AL_LOW_ALARM);
+        if(alarmCallback != nullptr) alarmCallback(_id, _alarmStatus);
     }
 
     //use diff to stop alarm
     if(_alarmStatus == AL_LOW_ALARM && sensorValue > _lowThreshold + _diff){
         _alarmStatus = AL_NO_ALARM;
         _lowBreachTime = 0;
-        if(alarmCallback != nullptr) alarmCallback(_id, AL_NO_ALARM);
+        if(alarmCallback != nullptr) alarmCallback(_id, _alarmStatus);
     } 
 }
