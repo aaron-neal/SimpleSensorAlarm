@@ -32,7 +32,7 @@ void SimpleSensorAlarm::update(float sensorValue){
 
     if(_enableLowAlarm) _lowAlarmCheck(sensorValue);
     //alarms have been disabled
-    if(_alarmStatus == AL_HIGH_ALARM && !_enableLowAlarm){
+    if(_alarmStatus == AL_LOW_ALARM && !_enableLowAlarm){
         _alarmStatus = AL_NO_ALARM;
         _lowBreachTime = 0;
         if(alarmCallback != nullptr) alarmCallback(_id, _alarmStatus);
