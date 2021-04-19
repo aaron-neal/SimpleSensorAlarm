@@ -22,7 +22,21 @@ void SimpleSensorAlarm::setup(
 
 void SimpleSensorAlarm::update(float sensorValue){
     if(_enableHighAlarm)_highAlarmCheck(sensorValue);
+
+    //alarms have been disabled
+    if(_alarmStatus == AL_HIGH_ALARM && !_enableHighAlarm){
+        _alarmStatus = AL_NO_ALARM;
+        _highBreachTime = 0;
+        if(alarmCallback != nullptr) alarmCallback(_id, _alarmStatus);
+    }
+
     if(_enableLowAlarm) _lowAlarmCheck(sensorValue);
+    //alarms have been disabled
+    if(_alarmStatus == AL_HIGH_ALARM && !_enableLowAlarm){
+        _alarmStatus = AL_NO_ALARM;
+        _lowBreachTime = 0;
+        if(alarmCallback != nullptr) alarmCallback(_id, _alarmStatus);
+    }
 }
 
 void SimpleSensorAlarm::setCallback(AlarmEventCB cb){
@@ -108,13 +122,6 @@ void SimpleSensorAlarm::_highAlarmCheck(float sensorValue){
         _highBreachTime = 0;
         if(alarmCallback != nullptr) alarmCallback(_id, AL_NO_ALARM);
     } 
-
-    //alarms have been disabled
-    if(_alarmStatus == AL_HIGH_ALARM && !_enableHighAlarm){
-        _alarmStatus = AL_NO_ALARM;
-        _highBreachTime = 0;
-        if(alarmCallback != nullptr) alarmCallback(_id, AL_NO_ALARM);
-    }
 }
 
 void SimpleSensorAlarm::_lowAlarmCheck(float sensorValue){
@@ -140,11 +147,4 @@ void SimpleSensorAlarm::_lowAlarmCheck(float sensorValue){
         _lowBreachTime = 0;
         if(alarmCallback != nullptr) alarmCallback(_id, AL_NO_ALARM);
     } 
-
-    //alarms have been disabled
-    if(_alarmStatus == AL_LOW_ALARM && !_enableLowAlarm){
-        _alarmStatus = AL_NO_ALARM;
-        _lowBreachTime = 0;
-        if(alarmCallback != nullptr) alarmCallback(_id, AL_NO_ALARM);
-    }
 }
