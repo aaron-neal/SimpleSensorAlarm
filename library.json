@@ -1,6 +1,6 @@
 {
     "name": "SimpleSensorAlarm",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "keywords": "alarm,sensors,temperature,humidity",
     "description": "An easy to use library for generating high / low alarms from sensors such as temperature and humidity",
     "repository":
@@ -13,6 +13,11 @@
         "email":"aaron@aaronneal.co.uk",
         "maintainer": true
     },
+    "examples":[{
+        "name": "Alarm Callback",
+        "base": "examples/alarm_callback",
+        "files": ["alarm_callback.ino"]
+    }],
     "frameworks": ["arduino"],
     "platforms": "*"
 }
