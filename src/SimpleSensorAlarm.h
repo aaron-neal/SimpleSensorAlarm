@@ -61,5 +61,6 @@ class SimpleSensorAlarm {
         unsigned long _timeDelay = 0;
         unsigned long _lowBreachTime = 0;
         unsigned long _highBreachTime = 0;
+        float _sensorValue = 0.00;
         AlarmStatus _alarmStatus = AL_NO_ALARM;
 };
